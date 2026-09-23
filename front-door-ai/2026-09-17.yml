@@ -1,0 +1,27 @@
+# Front Door AI Index — zimperium — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: zimperium
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: zimperium.com
+  final_host: zimperium.com
+  ownership: own
+  owner: zimperium
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 12
+  host_score: 12
+  density: 11.1
+  words: 1081
+  tiers:
+    agentic: 1
+    core: 11
+    model: 0
+  ambiguous: 6
+  top_terms:
+    AI: 11
+    agent: 6
+    agentic: 1

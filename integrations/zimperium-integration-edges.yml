@@ -10,6 +10,10 @@ checked:
 - https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/suppliers
 - microsoft-sentinel/integrations/microsoft-sentinel-integration-edges.yml
 - ping-identity/integrations/ping-identity-integration-edges.yml
+- https://androidenterprisepartners.withgoogle.com/api/search/products?aesd_product_type=EMM
+- https://androidenterprisepartners.withgoogle.com/emm/
+- jamf/integrations/jamf-integration-edges.yml
+- microsoft-intune/integrations/microsoft-intune-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -151,5 +155,69 @@ edges:
       latest_authorization: '2020-11-23'
   detected_by: sweep-gov-cloud.py
   first_seen: '2026-10-15'
+- partner_name: Android Enterprise (Google partner program)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://androidenterprisepartners.withgoogle.com/emm/
+  category: Android Enterprise solution partner
+  contract_reference:
+    register: Android Enterprise Solutions Directory (androidenterprisepartners.withgoogle.com /api/search/products)
+    standard: Android Enterprise Recommended
+    spec_file: null
+    role: android-enterprise-partner
+    registered_name: Zimperium
+    register_id: a2FHs000005cSKaMAM
+    matched_domain: zimperium.com
+    matched_by: domain
+    product_types:
+    - 'Device Trust: Endpoint security solutions (EDR, MTD)'
+    products_sample:
+    - Mobile Threat Defense
+    signal_note: listing = participation; certified_products = ONE entry per product type Google validated against
+      the Android Enterprise Recommended requirements (badge on the listing); the directory carries current validations
+      only, so lapsed is always false; partner_tier is the program badge (Gold / Silver), recorded, never counted
+    detected_by: sweep-device-management.py
+    detected: '2026-10-20'
+    identity: wikidata Q8072203 'Zimperium' P856 https://www.zimperium.com
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-device-management.py
+  detected: '2026-10-20'
+- partner_name: JAMF (own)
+  partner: jamf
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.jamf.com/details/zimperium-mobile-threat-defense
+  mirror_of: jamf/integrations/jamf-integration-edges.yml
+  apps:
+  - Zimperium Mobile Threat Defense
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: Integration
+- partner_name: Microsoft Intune (partner connector docs)
+  partner: microsoft-intune
+  partner_match: mirror
+  mirror_match: domain
+  type: docs
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/intune/device-security/mobile-threat-defense/setup-zimperium
+  mirror_of: microsoft-intune/integrations/microsoft-intune-integration-edges.yml
+  apps:
+  - Integrate Zimperium with Intune
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: Intune Mobile Threat Defense connector
 source:
 - https://github.com/marketplace?type=actions
